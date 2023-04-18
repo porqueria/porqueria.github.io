@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="css/PAGO.css" rel="stylesheet" type="text/css" media="all" />
+
+
+	<title>Metodo de Pago</title>
+	<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body><br>
+	<center><h1>Ingrese sus datos de tarjeta de credito</h1></center>
+	<form action="/procesar-pago" method="POST" id="payment-form">
+		<div class="form-row">
+			<label for="card-element">
+				Tarjeta de Credito o Debito
+			</label>
+			<div id="card-element">
+				<!-- Se mostrará el formulario de Stripe para ingresar los datos de la tarjeta -->
+			</div>
+
+			<!-- Se mostrará el error en caso de que la validación falle 
+			<div id="card-errors" role="alert"></div>-->
+            
+		</div>
+
+		<!-- Se agregarán otros campos requeridos para el pago, como el nombre del titular de la tarjeta y el monto a pagar -->
+
+        <!-- agregarle CSS al boton-->
+
+		
+       <button> <a class="input" href="file:///C:/xampp/htdocs/proyecto/DESEA%20FACTURA%20O%20NOTA.html">Pagar</a> </button>
+	</form>
+
+	<script>
+		// Agregar el objeto de la clave pública de Stripe
+		var stripe = Stripe('tu_clave_publica_de_stripe');
+
+		// Agregar el elemento de la tarjeta
+		var elements = stripe.elements();
+		var cardElement = elements.create('card');
+		cardElement.mount('#card-element');
+
+		
+					// Agregar el token al formulario y enviarlo al servidor
+					var tokenInput = document.createElement('input');
+					tokenInput.setAttribute('type', 'hidden');
+					tokenInput.setAttribute('name', 'stripeToken');
+					tokenInput.setAttribute('value', result.token.id);
+					form.appendChild(tokenInput);
+					form.submit();
+			
+
+                    
+	</script>
+</body>
+</html>
